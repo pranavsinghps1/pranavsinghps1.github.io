@@ -1,0 +1,23 @@
+# Site settings
+title: Aishwarya Kamath
+email: aishwaryakamath20@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  "The harder you work, the luckier you get." -- Gary Player
+  
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://ashkamath.github.io" # the base hostname & protocol for your site
+#twitter_username: jekyllrb
+github_username:  ashkamath
+
+# Build settings
+markdown: kramdown
+
+# Other options
+permalink: blog/:year/:month/:title
+job.title: "PhD student"
+excerpt_separator: "<!--more-->"
+
+# SEO stuff
+google_author: "https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AJsN-F6P5WeBNBYOe17Mg1-dwl4BP4AvP29uTBHG-32Xb946RBlt1JQj_vSakykWtd8Qcpf067bjfG7nphDfvuLjFopbD0tDizIUMIgXQeIwQROoE1dGL0k&user=WaW2C0UAAAAJ"
+# google_site_verification: ""
+# bing_webmastertools_id: ""
