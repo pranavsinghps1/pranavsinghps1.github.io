@@ -2,12 +2,7 @@
 title: Pranav Singh
 email: pranavsingh.ps1@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  "If it's your best in this
-moment, that's the best
-it can be.
-Tomorrow your best
-may be completely
-different." -- Rick Rubin
+  "If it's your best in this moment, that's the best it can be. Tomorrow your best may be completely different." -- Rick Rubin
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://pranavsinghps1.github.io/" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
