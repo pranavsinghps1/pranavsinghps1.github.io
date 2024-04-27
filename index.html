@@ -1,46 +1,82 @@
----
-layout: default
----
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
 
+<html lang="en">
+<head>
+  <title>Pranav Singh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .container-fluid {
+      padding-right: 0;
+      padding-left: 0;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+    }
+  </style>
+</head>
 
+<body>
+<div class="container-fluid">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span the="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="publications.html">Publications</a></li> 
+            <li><a href="">Blogs</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tbody>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>About</h2>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-
-    <tr style="padding:0px">
-        <td style="padding:0px">
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr style="padding:0px">
-                    <td style="padding:2.5%;width:63%;vertical-align:middle">
-                        <p>I am a Research Associate at NYU Langone Health working with <a href="https://www.spchopra.org/">Prof. Sumit Chopra</a>.
-                            My current research lies at the intersection of AI and healthcare,
-                            focusing on representation learning, computer vision, and dense prediction tasks. As of March 2024, I am working on
-                            deploying multi-modal cancer detection approaches for Visage.
-                        </p>
-
-                        <p style="text-align:center">
-                            <a href="mailto:pranavsingh.ps1@gmail.com">Email</a> &nbsp/&nbsp
-                            <!--  <a href="data/fil.pdf">CV</a> &nbsp/&nbsp-->
-                            <a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Google
-                                Scholar</a>
-                            &nbsp/&nbsp
-                            <!-- <a href="https://twitter.com/">Twitter</a> &nbsp/&nbsp -->
-                            <a href="https://github.com/pranavsinghps1">Github</a> &nbsp/&nbsp
-                            <a href="https://www.linkedin.com/in/pranavsinghps1/">Linkedin</a>
-                        </p>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Entries Column -->
+            <div class="col-md-8" style="height: auto;">
+                <div style="margin-top:3%; text-align:justify;">
+                    <!-- Content goes here -->
+                    <p>I am a Research Associate at NYU Langone Health working with <a href="https://www.spchopra.org/">Prof. Sumit Chopra</a> and <a href="https://cs.nyu.edu/~kgeras/">Prof. Krzysztof Geras</a>.
+                        My current research lies at the intersection of AI and healthcare,
+                        focusing on representation learning, computer vision, and dense prediction tasks.
+                        I have over three years of dedicated research experience in AI and medical image analysis. As of March 2024, I am working on
+                        deploying multi-modal cancer detection approaches for Visage.</p>
                         <h3>Experience</h3>
                         <p>
                         Prior to my current role, I served as a Research Scientist at the <a href="https://cds.nyu.edu/">NYU Center for Data Science</a>, 
@@ -48,275 +84,105 @@ layout: default
                         My academic journey includes a Master's degree in Computer Science from NYU (2023), where my research aimed at enhancing dense prediction and classification techniques for medical imaging. 
                         This work culminated in three notable publications, presented at two workshops (<a href="https://eccv2022.ecva.net/">ECCV 2022</a>, <a href="https://iccv2023.thecvf.com/">ICCV 2023</a>) and one conference (<a href="https://www.mlforhc.org/">MLHC 2023</a>).
                         </p>
-
+            
                         <h3>Education & Early Projects</h3>
                         <p>
                         I started my academic journey in Computer Science at Manipal University Jaipur, where I delved primarily into autonomous rover technology.
                         These rovers were made for the <a href="https://urc.marssociety.org/">University Rover Challenge (URC)</a> 2020 and the <a href="https://roverchallenge.org/irdc/">International Rover Design Challenge 2020</a>, where we emerged as international semi-finalists and secured a position in the top 30, respectively. 
-                        As the AI team lead for URC 2020 and head of the CS and AI subsystem for the International Rover Design Challenge 2020, I was responsible for image classification, low-light imaging, and dense prediction modules.
+                        As the AI team lead for URC 2020 and head of the CS and AI subsystem for the International Rover Design Challenge 2020, I was responsible for image classification, low-light imaging, and dense prediction modules. I have contributed to two prominent open-source projects in self-supervised learning: <a href="https://github.com/facebookresearch/vissl">Facebook AI's 
+                        VISSL </a>and <a href="https://github.com/lightly-ai/lightly">Lightly AI's SSL </a>project. My work involved enhancing the input/output functionalities and implementing DeepMind's <a href="https://nips.cc/virtual/2020/public/poster_f3ada80d5c4ee70142b17b8192b2958e.html">"Bootstrap Your Own Latent" </a> approach.
                         </p>
                         <h3>Leadership & Social Impact</h3>
                         <p>
                         Beyond my technical pursuits, I co-founded the <a href="https://www.hultprize.org/">Hult Prize</a> chapter at Manipal University Jaipur, significantly boosting the startup ecosystem and tripling the incubation rate on campus. 
                         Our efforts extended to social causes, where we successfully mobilized resources to support homeless children during the COVID-19 pandemic and the Assam-Bihar floods in 2020.
                         </p>
-
-                    </td>
-                    <td style="padding:2.5%;width:100%;max-width:100%" alt="profile photo">
-                            <img src='images/pp.jpg' width="500">
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Updates!</h2>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <ul>
-                <li>
-                <em> August 2023</em>: New paper titled <strong>"Enhancing Medical Image Segmentation: Optimizing Cross-Entropy Weights and Post-Processing with Autoencoders"</strong> accepted at <a
-                    href="https://cvamd2023.github.io/"> ICCV 2023 Computer Vision for Automated Medical Diagnosis (CVAMD)</a> and will be published in conjunction with ICCV 2023 proceedings.
-                </li>
-                <li>
-                <em> July 2023</em>: Paper titled <strong>"Efficient Representation Learning for Healthcare with Cross-Architectural Self-Supervision"</strong> accepted at <a
-                    href="https://www.mlforhc.org/"> Machine Learning for Healthcare</a> and will appear in Proceedings of Machine Learning Research.
-                </li>
-                <li>
-                    <em> May 2023</em>: My reseach work with <a href="https://scholar.google.com/citations?hl=en&user=DF9nXUYAAAAJ&view_op=list_works&sortby=pubdate"> Prof. Jacopo Cirrone</a> featured
-                in NYU's Center for Data Science <a href="https://nyudatascience.medium.com/machine-learning-expands-technologys-role-in-healthcare-waging-the-war-on-autoimmunity-d24c0cd99cb5"> blog post</a>.
-                    </li>
-                <li>
-                <em>October 2022</em>: Paper titled <strong>"CASS: Cross Architectural Self-Supervision for Medical Image Analysis"</strong> accepted at <a
-                    href="https://nips.cc/virtual/2022/workshop/49991"> NeurIPS 2022-Self-Supervised Learning: Theory and Practice Workshop</a>.
-                </li>
-                <li>
-                    <em>August 2022</em>: Paper titled <strong>"A Data-Efficient Deep Learning Framework for Segmentation and Classification of Histopathology Images"</strong> accepted at <a
-                        href="https://mcv-workshop.github.io/"> ECCV 2022 Medical Computer Vision </a> and will be published in conjunction with ECCV 2022 proceedings.
-                </li>
-                <li><em>January 2021</em>: Accepted in NYU's Masters in Computer Science program with 25% academic scholarship.
-                </li>
-                <li><em>December 2020</em>: Paper titled <strong>"Classification of Melanoma Using Efficient Nets with Multiple Ensembles and Metadata"</strong> accepted at ICCI-2020 (IIIT-Pune)</li>
-                <li><em>November 2020</em>: Finished in the top-30 of International Rover Challenge 2020
-                </li>
-                <li><em>March 2020</em>: Finished as international semi-finalists in <a href="https://www.youtube.com/watch?v=eIp8vpdjSPg&list=PLdPXMBV9SaMoP2EnJLIJ2HZFd8eI51q1B&index=52">URC 2020</a>.</li>
-            </ul>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Awards</h2>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <ul>
-                <li>
-                    NYU Academic scholarship
-                </li>
-            </ul>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Teaching</h2>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <ul>
-                <li>
-                    Course Assistant and Grader, <strong> CSCI-GA 3033/DS-GA 3001 Data Science for Healthcare at New York University CDS</strong>, Spring 2023 by Professor Jacopo Cirrone.
-                </li>
-                <li>
-                    Grader, <href="https://www.linkedin.com/in/jeremy-david-curuksu-71ba3819/"> Prof. Jeremy Curuksu's</a> instructional staff for
-                    <strong> NYU CDS' DS-GA 1007 class for Fall 2022</strong>.
-                </li>
-            </ul>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-        <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Research</h2>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <tbody>
-            <tr>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <div class="one">
-                        <img src='images/towards.png' width="500">
-                    </div>
-                </td>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <font color="black"><strong>Shifting to Machine Supervision: Annotation-Efficient Semi and Self-Supervised Learning for Automatic Medical Image Segmentation and Classification</strong></font>
-                    <br>
-                    <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-                    <a href="">Raviteja Chukkapalli</a>, <a href="">Shravan Chaudhari</a>,
-                    <a href="">Luoyao Chen</a>, <a href="">Mei Chen</a>, <a href="">Jinqian Pan</a>,
-                    <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-                    <br>
-                    <a href="https://arxiv.org/abs/2311.10319">Pre-print</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <div class="one">
-                        <img src='images/exploring.png' width="500">
-                    </div>
-                </td>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <font color="black"><strong>Exploring Intrinsic Properties of Medical Images for Self-Supervised Binary Semantic Segmentation</strong></font>
-                    <br>
-                    <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>
-                    and
-                    <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-                    <br>
-                    <a href="https://arxiv.org/abs/2402.02367">Paper</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <div class="one">
-                        <img src='images/iccv.jpeg' width="500">
-                    </div>
-                </td>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <font color="black"><strong>Enhancing Medical Image Segmentation: Optimizing Cross-Entropy Weights and Post-Processing with Autoencoders</strong></font>
-                    <br>
-                    <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-                    <a href="">Luoyao Chen</a>, <a href="">Mei Chen</a>, <a href="">Jinqian Pan</a>, <a href="">Raviteja Chukkapalli</a>, <a href="">Shravan Chaudhari</a>,
-                    <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-                    <br>
-                    <font color="red"><strong>(In Proceedings of International Conference on Computer Vision Workshops 2023).</strong></font>
-                    <br>
-                    <a href="https://arxiv.org/abs/2308.10488">Paper</a>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <div class="one">
-                        <img src='images/CASS.jpeg' width="500">
-                    </div>
-                </td>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <font color="black"><strong>Efficient Representation Learning for Healthcare with Cross-Architectural Self-Supervision</strong></font>
-                    <br>
-                    <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-                    <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-                    <br>
-                    <font color="red"><strong>(Proceedings of Machine Learning Research, 8th Machine Learning for Healthcare Conference).</strong></font>
-                    <br>
-                    <a href="https://arxiv.org/abs/2308.10064">Paper</a>
-                    /
-                    <a href="https://github.com/pranavsinghps1/CASS">Code</a>
-                    <br>
-                    <br>
-                    <font>Shorter Version was accepted at <font color="black"><strong>Self-Supervised Learning Theory & Practice Workshop, NeurIPS 2022</strong></font></font>
-                    <br>
-                    <font color="black"><strong>CASS: Cross Architectural Self-Supervision for Medical Image Analysis</strong></font>
-                    <br>
-                    <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-                    <a href="https://scholar.google.com/citations?user=Y2q1wVEAAAAJ">Elena Sizikova</a>,
-                    <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-                    <br>
-                    
-                    
-                    <a href="https://arxiv.org/abs/2206.04170v4">Paper</a>
-                    <br>
-                    
-                </td>
-            </tr>
-
-            <tr>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <div class="one">
-                        <img src='images/ae.png' width="500">
-                    </div>
-                </td>
-                <td style="padding:20px;width:50%;vertical-align:middle">
-                    <font color="black"><strong>A Data-Efficient Deep Learning Framework for Segmentation and Classification of Histopathology Images</strong></font>
-                    <br>
-                    <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-                    <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-                    <br>
-                    <font color="red"><strong>(In European Conference on Computer Vision (pp. 385-405). Cham: Springer Nature Switzerland).</strong></font>
-                    <br>
-                    <a href="https://arxiv.org/abs/2207.06489">Paper</a>
-                    /
-                    <a href="https://github.com/pranavsinghps1/DEDL">Code</a>
-                    <p></p>
-                </td>
-            </tr>
-
-        <tr>
-            <td style="padding:20px;width:50%;vertical-align:middle">
-                <div class="one">
-                    <img src='images/isic.jpg' width="500">
+                        
+                        <h3>Updates</h3>
+                        <ul>
+                          <li>
+                          <em> August 2023</em>: New paper titled <strong>"Enhancing Medical Image Segmentation: Optimizing Cross-Entropy Weights and Post-Processing with Autoencoders"</strong> accepted at <a
+                              href="https://cvamd2023.github.io/"> ICCV 2023 Computer Vision for Automated Medical Diagnosis (CVAMD)</a> and will be published in conjunction with ICCV 2023 proceedings.
+                          </li>
+                          <li>
+                          <em> July 2023</em>: Paper titled <strong>"Efficient Representation Learning for Healthcare with Cross-Architectural Self-Supervision"</strong> accepted at <a
+                              href="https://www.mlforhc.org/"> Machine Learning for Healthcare</a> and will appear in Proceedings of Machine Learning Research.
+                          </li>
+                          <li>
+                              <em> May 2023</em>: My reseach work with <a href="https://scholar.google.com/citations?hl=en&user=DF9nXUYAAAAJ&view_op=list_works&sortby=pubdate"> Prof. Jacopo Cirrone</a> featured
+                          in NYU's Center for Data Science <a href="https://nyudatascience.medium.com/machine-learning-expands-technologys-role-in-healthcare-waging-the-war-on-autoimmunity-d24c0cd99cb5"> blog post</a>.
+                              </li>
+                          <li>
+                          <em>October 2022</em>: Paper titled <strong>"CASS: Cross Architectural Self-Supervision for Medical Image Analysis"</strong> accepted at <a
+                              href="https://nips.cc/virtual/2022/workshop/49991"> NeurIPS 2022-Self-Supervised Learning: Theory and Practice Workshop</a>.
+                          </li>
+                          <li>
+                              <em>August 2022</em>: Paper titled <strong>"A Data-Efficient Deep Learning Framework for Segmentation and Classification of Histopathology Images"</strong> accepted at <a
+                                  href="https://mcv-workshop.github.io/"> ECCV 2022 Medical Computer Vision </a> and will be published in conjunction with ECCV 2022 proceedings.
+                          </li>
+                          <li><em>January 2021</em>: Accepted in NYU's Masters in Computer Science program with 25% academic scholarship.
+                          </li>
+                          <li><em>December 2020</em>: Paper titled <strong>"Classification of Melanoma Using Efficient Nets with Multiple Ensembles and Metadata"</strong> accepted at ICCI-2020 (IIIT-Pune)</li>
+                          <li><em>November 2020</em>: Finished in the top-30 of International Rover Challenge 2020
+                          </li>
+                          <li><em>March 2020</em>: Finished as international semi-finalists in <a href="https://www.youtube.com/watch?v=eIp8vpdjSPg&list=PLdPXMBV9SaMoP2EnJLIJ2HZFd8eI51q1B&index=52">URC 2020</a>.</li>
+                      </ul>
+            
+                      <h3>Awards</h3>
+                      <ul>
+                        <li>
+                            NYU Academic scholarship
+                        </li>
+                    </ul>
+                    <h3>Teaching</h3>
+                    <ul>
+                      <li>
+                        <strong> CSCI-GA 3033/DS-GA 3001 Data Science for Healthcare at New York University Center for Data Science and Courant</strong> <br>
+                          Graduate Adjunct Employee with Professor Jacopo Cirrone<br>
+                          Jan 2023 - May 2023 <br>
+                          New York, United States
+                          
+                      </li>
+                      <li>
+                        <strong> DS-GA 1007 Programming for Data Science at New York University Center for Data Science</strong> <br>
+                        Grader with Professor Jeremy Curuksu<br>
+                        Sep 2022 - Dec 2022 <br>
+                        New York, United States<br>
+                      </li>
+                      <br>
+                  </ul>
                 </div>
-            </td>
-            <td style="padding:20px;width:50%;vertical-align:middle">
-                <font color="black"><strong>Classification of Melanoma Using Efficient Nets with Multiple Ensembles and Metadata</strong></font>
+            </div>
+
+            <!-- Contact Info on the Sidebar -->
+            <div class="col-md-4">
+                <!-- Sidebar content here -->
                 <br>
-                <a href="https://scholar.google.com/citations?user=YmRuZCkAAAAJ&hl=en&oi=sra">Vardan Agarwal</a>,
-                <a href="">Harshit Jhalani</a>,
-                <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-                <a href="https://scholar.google.com/citations?user=v8yxEN8AAAAJ&hl=en">Rahul Dixit</a>
-                <br>
-                <font color="red"><strong>(In Proceedings of International Conference on Computational Intelligence: ICCI 2020, pp. 101-111. Springer Singapore, 2022).</strong></font>
-                <br>
-                <a href="https://link.springer.com/chapter/10.1007/978-981-16-3802-2_8">Paper</a>
-                <p></p>
-            </td>
-        </tr>
+                <img src='images/pp.jpg' width="300">
+                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Pranav Singh</b></div><br>
+                <p>Research Associate<br>
+                NYU Langone Health<br>
+                New York, USA<br>
+                </p>
+            </div>
 
-    </tbody>
-</table>
+            <!-- Additional Links on the Sidebar -->
+            <div class="col-md-4" style="margin-top:2%">
+                <!-- Links here -->
+                <dd><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Google Scholar</a></dd> 
+                <dd><a href="mailto:ps4364@nyu.edu">Email</a></dd>
+                <dd><a href="https://www.linkedin.com/in/pranavsinghps1/">LinkedIn</a></dd>
+            </div>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
+    <!-- Footer -->
+    <footer>
+      <p> </p>
+      
+      <p>© 2024 Pranav Singh - All Rights Reserved</p>
+      <a style="color:#b5bec9;font-size:0.8em" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a>
+    </footer>
+</div>
+</body>
+</html>
