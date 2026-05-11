@@ -1,160 +1,313 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-  <title>Publications</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <title>Publications · Pranav Singh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --surface: #fffefb;
+      --text: #1a1714;
+      --muted: #7a7369;
+      --accent: #7c5c3e;
+      --accent-light: #c9a882;
+      --border: #e3ddd6;
+      --link: #4a6a8a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: relative;
+    }
+    .nav-brand {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 56px; left: 0; right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 0.75rem 1.25rem; font-size: 0.95rem; }
+    }
+
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+    @media (min-width: 641px) { main { padding: 4rem 2rem 6rem; } }
+
+    .page-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .pub-list { display: flex; flex-direction: column; }
+
+    .pub-item {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      animation: fadeUp 0.6s ease both;
+    }
+    .pub-item:nth-child(1) { animation-delay: 0.05s; }
+    .pub-item:nth-child(2) { animation-delay: 0.1s; }
+    .pub-item:nth-child(3) { animation-delay: 0.15s; }
+    .pub-item:nth-child(4) { animation-delay: 0.2s; }
+    .pub-item:nth-child(5) { animation-delay: 0.25s; }
+
+    @media (max-width: 480px) {
+      .pub-item { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+
+    .pub-year {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding-top: 0.2em;
+    }
+    .pub-title {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .pub-venue {
+      font-size: 0.83rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 0.35rem;
+    }
+    .pub-authors {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      line-height: 1.5;
+    }
+    .pub-authors strong { color: var(--text); font-weight: 500; }
+    .pub-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .pub-links a {
+      font-size: 0.78rem;
+      color: var(--link);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border);
+      padding: 0.18rem 0.55rem;
+      border-radius: 2px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .pub-links a:hover { background: var(--border); border-color: var(--accent-light); }
+    .note {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed var(--border);
+      font-style: italic;
+      line-height: 1.55;
+    }
+    .note a { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--accent-light); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-	  <div class="container">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="publications.html">Publications</a></li> 
-            <li><a href="">Blogs</a></li>
-		  </ul>
-		</div>
-	  </div>
-	</nav>
-  
-  <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height: 100vh;">
-                
-            <div style="margin-top:3%; text-align:justify;">               
-            <h3>Publications</h3>
-            <ul style="list-style-type: circle;">
-            <li><td style="padding:20px;width:50%;vertical-align:middle">
-              
-              <font color="black"><strong>Shifting to Machine Supervision: Annotation-Efficient Semi and Self-Supervised Learning for Automatic Medical Image Segmentation and Classification</strong></font>
-              <br>
-              <font color="red"><strong>In Nature's Scientific Journal.</strong></font>
-              <br>
-              <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-              <a href="">Raviteja Chukkapalli</a>, <a href="">Shravan Chaudhari</a>,
-              <a href="">Luoyao Chen</a>, <a href="">Mei Chen</a>, <a href="">Jinqian Pan</a>,
-              <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-              <br>
-              <a href="https://www.nature.com/articles/s41598-024-61822-9">Paper</a> /
-              <a href="https://github.com/pranavsinghps1/S4MI">Code</a>
-            </li></td>
-            </tr>
-            <br>
-      
-      <br>
-      <tr><li>
-          </td>
-          <td style="padding:20px;width:50%;vertical-align:middle">
-              <font color="black"><strong>Enhancing Medical Image Segmentation: Optimizing Cross-Entropy Weights and Post-Processing with Autoencoders</strong></font>
-              <font color="red"><strong>In Proceedings of International Conference on Computer Vision Workshops 2023.</strong></font>
-              <br>
-              <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-              <a href="">Luoyao Chen</a>, <a href="">Mei Chen</a>, <a href="">Jinqian Pan</a>, <a href="">Raviteja Chukkapalli</a>, <a href="">Shravan Chaudhari</a>,
-              <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-              <a href="https://arxiv.org/abs/2308.10488">Paper</a>
-            </li></td>
-      </tr>
-
-      <br>
-      <tr><li>
-          <td style="padding:20px;width:50%;vertical-align:middle">
-              <font color="black"><strong>Efficient Representation Learning for Healthcare with Cross-Architectural Self-Supervision</strong></font>
-              <br>
-              <font color="red"><strong>In Proceedings of Machine Learning Research, 8th Machine Learning for Healthcare Conference.</strong></font>
-              <br>
-              <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-              <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-              <br>
-              <a href="https://arxiv.org/abs/2308.10064">Paper</a>
-              /
-              <a href="https://github.com/pranavsinghps1/CASS">Code</a>
-              <br>
-              <br>
-              <font>Shorter Version was accepted at <font color="black"><strong>Self-Supervised Learning Theory & Practice Workshop, NeurIPS 2022</strong></font></font>
-              <br>
-              <font color="black"><strong>CASS: Cross Architectural Self-Supervision for Medical Image Analysis</strong></font>
-              <br>
-              <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-              <a href="https://scholar.google.com/citations?user=Y2q1wVEAAAAJ">Elena Sizikova</a>,
-              <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-              <br>
-              <a href="https://arxiv.org/abs/2206.04170v4">Paper</a>
-              <br>
-          </td>
-        </li>
-      </tr>
-      <br>
-      <tr><li>
-          </td>
-          <td style="padding:20px;width:50%;vertical-align:middle">
-              <font color="black"><strong>A Data-Efficient Deep Learning Framework for Segmentation and Classification of Histopathology Images</strong></font>
-              <font color="red"><strong>In European Conference on Computer Vision (pp. 385-405). Cham: Springer Nature Switzerland.</strong></font>
-              <br>
-              <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-              <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Jacopo Cirrone</a>
-              <br>
-              <a href="https://arxiv.org/abs/2207.06489">Paper</a>
-              /
-              <a href="https://github.com/pranavsinghps1/DEDL">Code</a>
-              <p></p>
-          </td>
-        </li>
-      </tr>
-
-  <tr><li>
-      <td style="padding:20px;width:50%;vertical-align:middle">
-          <font color="black"><strong>Classification of Melanoma Using Efficient Nets with Multiple Ensembles and Metadata</strong></font> <br>
-          <font color="red"><strong>In Proceedings of International Conference on Computational Intelligence: ICCI 2020, pp. 101-111. Springer Singapore, 2022.</strong></font>
-          <br> 
-          <a href="https://scholar.google.com/citations?user=YmRuZCkAAAAJ&hl=en&oi=sra">Vardan Agarwal</a>,
-          <a href="">Harshit Jhalani</a>,
-          <strong><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Pranav Singh</a></strong>,
-          <a href="https://scholar.google.com/citations?user=v8yxEN8AAAAJ&hl=en">Rahul Dixit</a>
-          <br>
-          <a href="https://link.springer.com/chapter/10.1007/978-981-16-3802-2_8">Paper</a>
-          <p></p>
-      </td>
-    </li>
-    </tr>
+<nav>
+  <div class="inner">
+    <a class="nav-brand" href="index.html">Pranav Singh</a>
+    <button class="nav-toggle" aria-label="Toggle navigation"
+      onclick="this.classList.toggle('open'); document.getElementById('nav-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html" class="active">Publications</a></li>
+      <li><a href="">Blog</a></li>
     </ul>
-    </div>
-            </div>
+  </div>
+</nav>
 
+<main>
+  <h1 class="page-title">Publications</h1>
+
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <span class="pub-year">2024</span>
+      <div>
+        <div class="pub-title">Shifting to Machine Supervision: Annotation-Efficient Semi and Self-Supervised Learning for Automatic Medical Image Segmentation and Classification</div>
+        <div class="pub-venue">Nature Scientific Reports</div>
+        <div class="pub-authors"><strong>Pranav Singh</strong>, Raviteja Chukkapalli, Shravan Chaudhari, Luoyao Chen, Mei Chen, Jinqian Pan, Jacopo Cirrone</div>
+        <div class="pub-links">
+          <a href="https://www.nature.com/articles/s41598-024-61822-9">Paper</a>
+          <a href="https://github.com/pranavsinghps1/S4MI">Code</a>
         </div>
-
+      </div>
     </div>
-    <!-- /.container -->
-    
+
+    <div class="pub-item">
+      <span class="pub-year">2023</span>
+      <div>
+        <div class="pub-title">Enhancing Medical Image Segmentation: Optimizing Cross-Entropy Weights and Post-Processing with Autoencoders</div>
+        <div class="pub-venue">ICCV 2023 — Computer Vision for Automated Medical Diagnosis (CVAMD) Workshop</div>
+        <div class="pub-authors"><strong>Pranav Singh</strong>, Luoyao Chen, Mei Chen, Jinqian Pan, Raviteja Chukkapalli, Shravan Chaudhari, Jacopo Cirrone</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2308.10488">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2023</span>
+      <div>
+        <div class="pub-title">Efficient Representation Learning for Healthcare with Cross-Architectural Self-Supervision</div>
+        <div class="pub-venue">Machine Learning for Healthcare (MLHC) 2023 — Proceedings of Machine Learning Research</div>
+        <div class="pub-authors"><strong>Pranav Singh</strong>, Jacopo Cirrone</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2308.10064">Paper</a>
+          <a href="https://github.com/pranavsinghps1/CASS">Code</a>
+        </div>
+        <div class="note">
+          Shorter version: <em>CASS: Cross Architectural Self-Supervision for Medical Image Analysis</em> — NeurIPS 2022 Self-Supervised Learning Workshop.
+          <strong>Pranav Singh</strong>, Elena Sizikova, Jacopo Cirrone. <a href="https://arxiv.org/abs/2206.04170v4">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2022</span>
+      <div>
+        <div class="pub-title">A Data-Efficient Deep Learning Framework for Segmentation and Classification of Histopathology Images</div>
+        <div class="pub-venue">ECCV 2022 — Medical Computer Vision Workshop (Springer)</div>
+        <div class="pub-authors"><strong>Pranav Singh</strong>, Jacopo Cirrone</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2207.06489">Paper</a>
+          <a href="https://github.com/pranavsinghps1/DEDL">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2022</span>
+      <div>
+        <div class="pub-title">Classification of Melanoma Using Efficient Nets with Multiple Ensembles and Metadata</div>
+        <div class="pub-venue">ICCI 2020 — Springer Singapore, pp. 101–111</div>
+        <div class="pub-authors">Vardan Agarwal, Harshit Jhalani, <strong>Pranav Singh</strong>, Rahul Dixit</div>
+        <div class="pub-links">
+          <a href="https://link.springer.com/chapter/10.1007/978-981-16-3802-2_8">Paper</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Pranav Singh &nbsp;·&nbsp; New York, NY</p>
+</footer>
+
 </body>
-
-
 </html>

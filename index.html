@@ -1,194 +1,335 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-  <title>Pranav Singh</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <title>Pranav Singh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
+    :root {
+      --bg: #f7f4ef;
+      --surface: #fffefb;
+      --text: #1a1714;
+      --muted: #7a7369;
+      --accent: #7c5c3e;
+      --accent-light: #c9a882;
+      --border: #e3ddd6;
+      --link: #4a6a8a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
       position: relative;
-      box-sizing: border-box;
     }
-    .container-fluid {
-      padding-right: 0;
-      padding-left: 0;
-      margin-right: auto;
-      margin-left: auto;
+    .nav-brand {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
     }
-    footer {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    /* Hamburger button */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 56px; left: 0; right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 0.75rem 1.25rem; font-size: 0.95rem; }
+    }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
       width: 100%;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+    @media (min-width: 641px) { main { padding: 4rem 2rem 6rem; } }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5rem;
+      align-items: flex-start;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-photo {
+      width: 140px;
+      height: 175px;
+      flex-shrink: 0;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 4px;
+      filter: grayscale(15%);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-name {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.7rem, 5vw, 2.4rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .hero-title {
+      font-size: 0.83rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .hero-links a {
+      font-size: 0.85rem;
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-light);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    @media (max-width: 480px) {
+      .hero { flex-direction: column; gap: 1.4rem; }
+      .hero-photo { width: 100px; height: 125px; }
+    }
+
+    /* PROSE */
+    .prose p {
+      font-size: 0.975rem;
+      color: #2e2a25;
+      margin-bottom: 1.1rem;
+      max-width: 68ch;
+    }
+    .prose a { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--accent-light); transition: color 0.2s; }
+    .prose a:hover { color: var(--accent); }
+
+    /* SECTIONS */
+    section { margin-bottom: 3rem; animation: fadeUp 0.7s ease both; }
+    section:nth-child(2) { animation-delay: 0.08s; }
+    section:nth-child(3) { animation-delay: 0.14s; }
+    section:nth-child(4) { animation-delay: 0.2s; }
+    section:nth-child(5) { animation-delay: 0.26s; }
+
+    .section-label {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* UPDATES */
+    .update-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .update-list li {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+    .update-date {
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding-top: 0.1em;
+    }
+    .update-text { font-size: 0.9rem; color: #2e2a25; line-height: 1.6; }
+    .update-text a { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--accent-light); transition: color 0.2s; }
+    .update-text a:hover { color: var(--accent); }
+    .update-text strong { font-weight: 500; color: var(--text); }
+
+    @media (max-width: 480px) {
+      .update-list li { grid-template-columns: 1fr; gap: 0.1rem; }
+    }
+
+    /* TEACHING */
+    .teaching-item { margin-bottom: 1.4rem; }
+    .teaching-item h4 { font-size: 0.88rem; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; line-height: 1.45; }
+    .teaching-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* AWARDS */
+    .item-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .item-list li { font-size: 0.9rem; color: #2e2a25; padding-left: 1rem; position: relative; }
+    .item-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent-light); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-
 <body>
-<div class="container-fluid">
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span the="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="publications.html">Publications</a></li> 
-            <li><a href="">Blogs</a></li>
-          </ul>
-        </div>
+<nav>
+  <div class="inner">
+    <a class="nav-brand" href="index.html">Pranav Singh</a>
+    <button class="nav-toggle" aria-label="Toggle navigation"
+      onclick="this.classList.toggle('open'); document.getElementById('nav-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <div class="hero">
+    <img class="hero-photo" src="pp.jpg" alt="Pranav Singh">
+    <div class="hero-text">
+      <h1 class="hero-name">Pranav Singh</h1>
+      <p class="hero-title">Research Scientist · NYU Langone Health</p>
+      <div class="hero-links">
+        <a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Google Scholar</a>
+        <a href="mailto:ps4364@nyu.edu">Email</a>
+        <a href="https://www.linkedin.com/in/pranavsinghps1/">LinkedIn</a>
       </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height: auto;">
-                <div style="margin-top:3%; text-align:justify;">
-                    <!-- Content goes here -->
-                    <p>I am a Research Scientist at NYU Langone Health working with <a href="https://nyulangone.org/doctors/1861482028/miriam-a-bredella">Dr. Miriam Bredella</a>, <a href="https://cs.nyu.edu/~kgeras/">Prof. Krzysztof Geras</a> and <a href="https://seyiqi.github.io/">Prof. Artie Shen</a> on survival analysis, opportunistic imaging, and representation learning for medical imaging.
-                      Before this, I worked with <a href="https://www.spchopra.net/">Prof. Sumit Chopra</a> and <a href="https://cs.nyu.edu/~kgeras/">Prof. Krzysztof Geras</a> on deploying end-to-end pipeline for pre-processing, training, and inference for lesion detection and classification
-                      models on multi-modal mammography scans. I have over three years of dedicated research experience in AI and medical image analysis.</p>
-                        <h3>Experience</h3>
-                        <p>
-                        Prior to my current role, I served as an Assistant Research Scientist at the <a href="https://cds.nyu.edu/">NYU Center for Data Science</a>, 
-                        focusing on developing advanced deep learning methodologies for medical image analysis under the mentorship of <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Prof. Jacopo Cirrone</a>. 
-                        My academic journey includes a Master's degree in Computer Science from NYU (2023), where my research aimed at enhancing dense prediction and classification techniques for medical imaging. 
-                        This work culminated in three notable publications, presented at two workshops (<a href="https://eccv2022.ecva.net/">ECCV 2022</a>, <a href="https://iccv2023.thecvf.com/">ICCV 2023</a>) and one conference (<a href="https://www.mlforhc.org/">MLHC 2023</a>).
-                        </p>
-                        <h3>Education & Early Projects</h3>
-                        <p>
-                        I started my academic journey in Computer Science at Manipal University Jaipur, where I delved primarily into autonomous rover technology.
-                        These rovers were made for the <a href="https://urc.marssociety.org/">University Rover Challenge (URC)</a> 2020 and the <a href="https://roverchallenge.org/irdc/">International Rover Design Challenge 2020</a>, where we emerged as international semi-finalists and secured a position in the top 30, respectively. 
-                        As the AI team lead for URC 2020 and head of the CS and AI subsystem for the International Rover Design Challenge 2020, I was responsible for image classification, low-light imaging, and dense prediction modules. I have contributed to two prominent open-source projects in self-supervised learning: <a href="https://github.com/facebookresearch/vissl">Facebook AI's 
-                        VISSL </a>and <a href="https://github.com/lightly-ai/lightly">Lightly AI's SSL </a>project. My work involved enhancing the input/output functionalities and implementing DeepMind's <a href="https://nips.cc/virtual/2020/public/poster_f3ada80d5c4ee70142b17b8192b2958e.html">"Bootstrap Your Own Latent" </a> approach.
-                        </p>
-                        <h3>Leadership & Social Impact</h3>
-                        <p>
-                        Beyond my technical pursuits, I co-founded the <a href="https://www.hultprize.org/">Hult Prize</a> chapter at Manipal University Jaipur, significantly boosting the startup ecosystem and tripling the incubation rate on campus. 
-                        Our efforts extended to social causes, where we successfully mobilized resources to support homeless children during the COVID-19 pandemic and the Assam-Bihar floods in 2020.
-                        </p>
-                        
-                        <h3>Updates</h3>
-                        <ul>
-                          <li>
-                              <em> July 2024</em>: Our research on semi- and self-supervised learning featured in <a
-                                  href="https://nyudatascience.medium.com/semi-and-self-supervised-learning-help-clinicians-minimize-manual-labeling-in-medical-image-1e9c3dec8978">NYU Data Science's Research blog</a>.
-                          </li>
-                          <li>
-                          <em> May 2024</em>: New paper titled <strong>"Shifting to machine supervision: annotation-efficient semi and self-supervised learning for automatic medical image segmentation and classification"</strong> published in <a
-                                href="https://www.nature.com/articles/s41598-024-61822-9"> Nature's Scientific Reports Journal</a>.
-                          </li>
-                          <li>
-                          <em> August 2023</em>: New paper titled <strong>"Enhancing Medical Image Segmentation: Optimizing Cross-Entropy Weights and Post-Processing with Autoencoders"</strong> accepted at <a
-                              href="https://cvamd2023.github.io/"> ICCV 2023 Computer Vision for Automated Medical Diagnosis (CVAMD)</a> and will be published in conjunction with ICCV 2023 proceedings.
-                          </li>
-                          <li>
-                          <em> July 2023</em>: Paper titled <strong>"Efficient Representation Learning for Healthcare with Cross-Architectural Self-Supervision"</strong> accepted at <a
-                              href="https://www.mlforhc.org/"> Machine Learning for Healthcare</a> and will appear in Proceedings of Machine Learning Research.
-                          </li>
-                          <li>
-                              <em> May 2023</em>: My research work with <a href="https://scholar.google.com/citations?hl=en&user=DF9nXUYAAAAJ&view_op=list_works&sortby=pubdate"> Prof. Jacopo Cirrone</a> featured
-                          in NYU's Center for Data Science <a href="https://nyudatascience.medium.com/machine-learning-expands-technologys-role-in-healthcare-waging-the-war-on-autoimmunity-d24c0cd99cb5"> blog post</a>.
-                              </li>
-                          <li>
-                          <em>October 2022</em>: Paper titled <strong>"CASS: Cross Architectural Self-Supervision for Medical Image Analysis"</strong> accepted at <a
-                              href="https://nips.cc/virtual/2022/workshop/49991"> NeurIPS 2022-Self-Supervised Learning: Theory and Practice Workshop</a>.
-                          </li>
-                          <li>
-                              <em>August 2022</em>: Paper titled <strong>"A Data-Efficient Deep Learning Framework for Segmentation and Classification of Histopathology Images"</strong> accepted at <a
-                                  href="https://mcv-workshop.github.io/"> ECCV 2022 Medical Computer Vision </a> and will be published in conjunction with ECCV 2022 proceedings.
-                          </li>
-                          <li><em>January 2021</em>: Accepted in NYU's Masters in Computer Science program with 25% academic scholarship.
-                          </li>
-                          <li><em>December 2020</em>: Paper titled <strong>"Classification of Melanoma Using Efficient Nets with Multiple Ensembles and Metadata"</strong> accepted at ICCI-2020 (IIIT-Pune)</li>
-                          <li><em>November 2020</em>: Finished in the top-30 of International Rover Challenge 2020
-                          </li>
-                          <li><em>March 2020</em>: Finished as international semi-finalists in <a href="https://www.youtube.com/watch?v=eIp8vpdjSPg&list=PLdPXMBV9SaMoP2EnJLIJ2HZFd8eI51q1B&index=52">URC 2020</a>.</li>
-                      </ul>
-            
-                      <h3>Awards</h3>
-                      <ul>
-                        <li>
-                            NYU Academic scholarship
-                        </li>
-                    </ul>
-                    <h3>Teaching</h3>
-                    <ul>
-                      <li>
-                        <strong> CSCI-GA 3033/DS-GA 3001 Data Science for Healthcare at New York University Center for Data Science and Courant</strong> <br>
-                          Graduate Adjunct Employee with Professor Jacopo Cirrone<br>
-                          Jan 2023 - May 2023 <br>
-                          New York, United States
-                      </li>
-                      <li>
-                        <strong> DS-GA 1007 Programming for Data Science at New York University Center for Data Science</strong> <br>
-                        Grader with Professor Jeremy Curuksu<br>
-                        Sep 2022 - Dec 2022 <br>
-                        New York, United States<br>
-                      </li>
-                      <br>
-                  </ul>
-                </div>
-            </div>
-
-            <!-- Contact Info on the Sidebar -->
-            <div class="col-md-4">
-                <!-- Sidebar content here -->
-                <br>
-                <img src='images/pp.jpg' width="300">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Pranav Singh</b></div><br>
-                <p>Research Scientist<br>
-                NYU Langone Health<br>
-                (Translational Research Building,<br>
-                227 East 30th Street<br>
-                7th floor, New York, NY 10016)<br>
-                </p>
-            </div>
-
-            <!-- Additional Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
-                <!-- Links here -->
-                <dd><a href="https://scholar.google.com/citations?user=aUPq9a0AAAAJ&hl=en">Google Scholar</a></dd> 
-                <dd><a href="mailto:ps4364@nyu.edu">Email</a></dd>
-                <dd><a href="https://www.linkedin.com/in/pranavsinghps1/">LinkedIn</a></dd>
-            </div>
-        </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-      <p> </p>
-      
-      <p>© 2024 Pranav Singh - All Rights Reserved</p>
-      <a style="color:#b5bec9;font-size:0.8em" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a>
-    </footer>
-</div>
+  <section>
+    <div class="prose">
+      <p>I am a Research Scientist at <a href="https://nyulangone.org/">NYU Langone Health</a>, working with <a href="https://nyulangone.org/doctors/1861482028/miriam-a-bredella">Dr. Miriam Bredella</a>, <a href="https://cs.nyu.edu/~kgeras/">Prof. Krzysztof Geras</a>, and <a href="https://seyiqi.github.io/">Prof. Artie Shen</a> on survival analysis, opportunistic imaging, and representation learning for medical imaging. Previously, I worked with <a href="https://www.spchopra.net/">Prof. Sumit Chopra</a> and Prof. Geras on end-to-end pipelines for lesion detection and classification on multi-modal mammography scans.</p>
+      <p>Prior to this, I was an Assistant Research Scientist at the <a href="https://cds.nyu.edu/">NYU Center for Data Science</a>, developing deep learning methods for medical image analysis under <a href="https://scholar.google.com/citations?user=DF9nXUYAAAAJ&hl=en">Prof. Jacopo Cirrone</a>. I hold a Master's in Computer Science from NYU (2023), with research on dense prediction and classification for medical imaging — resulting in three publications at <a href="https://eccv2022.ecva.net/">ECCV 2022</a>, <a href="https://iccv2023.thecvf.com/">ICCV 2023</a>, and <a href="https://www.mlforhc.org/">MLHC 2023</a>.</p>
+      <p>My undergraduate work at Manipal University Jaipur focused on autonomous rover systems for the <a href="https://urc.marssociety.org/">University Rover Challenge 2020</a>, where our team reached the international semi-finals. I have contributed to <a href="https://github.com/facebookresearch/vissl">Facebook AI's VISSL</a> and <a href="https://github.com/lightly-ai/lightly">Lightly AI's SSL</a> open-source projects, implementing DeepMind's BYOL approach. I also co-founded the <a href="https://www.hultprize.org/">Hult Prize</a> chapter at Manipal, tripling the campus incubation rate.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-label">Updates</h2>
+    <ul class="update-list">
+      <li><span class="update-date">Jul 2024</span><span class="update-text">Research on semi- and self-supervised learning featured in the <a href="https://nyudatascience.medium.com/semi-and-self-supervised-learning-help-clinicians-minimize-manual-labeling-in-medical-image-1e9c3dec8978">NYU Data Science blog</a>.</span></li>
+      <li><span class="update-date">May 2024</span><span class="update-text"><strong>"Shifting to Machine Supervision…"</strong> published in <a href="https://www.nature.com/articles/s41598-024-61822-9">Nature Scientific Reports</a>.</span></li>
+      <li><span class="update-date">Aug 2023</span><span class="update-text"><strong>"Enhancing Medical Image Segmentation…"</strong> accepted at <a href="https://cvamd2023.github.io/">ICCV 2023 CVAMD Workshop</a>.</span></li>
+      <li><span class="update-date">Jul 2023</span><span class="update-text"><strong>"Efficient Representation Learning for Healthcare…"</strong> accepted at <a href="https://www.mlforhc.org/">MLHC 2023</a>, PMLR.</span></li>
+      <li><span class="update-date">May 2023</span><span class="update-text">Research featured in the NYU CDS <a href="https://nyudatascience.medium.com/machine-learning-expands-technologys-role-in-healthcare-waging-the-war-on-autoimmunity-d24c0cd99cb5">blog post</a>.</span></li>
+      <li><span class="update-date">Oct 2022</span><span class="update-text"><strong>"CASS: Cross Architectural Self-Supervision…"</strong> accepted at <a href="https://nips.cc/virtual/2022/workshop/49991">NeurIPS 2022 SSL Workshop</a>.</span></li>
+      <li><span class="update-date">Aug 2022</span><span class="update-text"><strong>"A Data-Efficient Deep Learning Framework…"</strong> accepted at <a href="https://mcv-workshop.github.io/">ECCV 2022 MCV Workshop</a>.</span></li>
+      <li><span class="update-date">Jan 2021</span><span class="update-text">Admitted to NYU's MS in Computer Science with a 25% academic scholarship.</span></li>
+      <li><span class="update-date">Dec 2020</span><span class="update-text"><strong>"Classification of Melanoma…"</strong> accepted at ICCI-2020 (IIIT-Pune).</span></li>
+      <li><span class="update-date">Nov 2020</span><span class="update-text">Finished in the top-30 at the International Rover Challenge 2020.</span></li>
+      <li><span class="update-date">Mar 2020</span><span class="update-text">International semi-finalists at <a href="https://www.youtube.com/watch?v=eIp8vpdjSPg">URC 2020</a>.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-label">Teaching</h2>
+    <div class="teaching-item">
+      <h4>CSCI-GA 3033 / DS-GA 3001 — Data Science for Healthcare</h4>
+      <p>Graduate Adjunct Employee with Prof. Jacopo Cirrone · NYU CDS & Courant · Jan–May 2023</p>
+    </div>
+    <div class="teaching-item">
+      <h4>DS-GA 1007 — Programming for Data Science</h4>
+      <p>Grader with Prof. Jeremy Curuksu · NYU Center for Data Science · Sep–Dec 2022</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-label">Awards</h2>
+    <ul class="item-list">
+      <li>NYU Academic Scholarship (25%), 2021</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Pranav Singh &nbsp;·&nbsp; New York, NY</p>
+</footer>
+
 </body>
 </html>
